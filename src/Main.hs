@@ -1,12 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
-import Web.Scotty
-import Data.Monoid ((<>))
+import Network.HTTP.Simple    
+--import Web.Scotty
+--import Data.Monoid ((<>))
 
 main :: IO ()
 main = do
- putStrLn "Starting server..."
- scotty 3000 $ do
+ response <- httpLbs "https://www.comparethemarket.com/"
+ putStrLn $ show (getResponseStatusCode response)
+ 
+{- scotty 3000 $ do
   hello
   index
 
@@ -26,4 +29,5 @@ helloPage :: ActionM()
 helloPage = do
     name <- param "name"
     text ("hello " <> name)    
+-}
 
