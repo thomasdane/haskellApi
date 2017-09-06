@@ -3,6 +3,7 @@ import System.IO (readFile)
 import Data.Time (getCurrentTime)
 import Data.Aeson
 import RepeatMessage
+import Cat
 
 main :: IO ()
 main = do
