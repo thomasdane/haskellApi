@@ -1,24 +1,26 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-05 16:11:08.9858928 UTC
+2017-09-06 15:35:51.4020566 UTC
 
 interface main@main:Main 8002
-  interface hash: 849ca45030a3821f09cce99d1a8d052a
-  ABI hash: 2a92b65bc39b3cfe7435f92fd2fedc9d
-  export-list hash: ae73136d191b86be1477ad2712fc3a65
+  interface hash: abab2f7f366ffc62678623dd5de0c043
+  ABI hash: 9ab94629a614e0da1e3c8d6d623d0d8c
+  export-list hash: 18704b1ad68c14b16d1f53c879232545
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: a6e3c85daf09aced1281ee55c32d1805
   sig of: Nothing
   used TH splices: False
   where
 exports:
+  Main.beCareful
   Main.encodeToJson
   Main.greet
   Main.main
   Main.numbers
   Main.printConfig
   Main.printTime
-module dependencies:
+  Main.sayHello
+module dependencies: Cat RepeatMessage
 package dependencies: Win32-2.3.1.1@Win32-2.3.1.1
                       aeson-1.1.2.0@aeson-1.1.2.0-bvg0hqcciCGZuD2wrCkaE
                       array-0.5.1.1@array-0.5.1.1
@@ -99,6 +101,10 @@ import  -/  base-4.9.1.0:GHC.Show eca5834daba3b6a2bbbe64ab52056707
 import  -/  base-4.9.1.0:Prelude 74b3e204395920329f6de9d97206abe9
 import  -/  base-4.9.1.0:System.IO 5daf3f384209c11d9566e3409af8ec5d
 import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+import  -/  Cat f782c47c2bc2ff63be479fff3054389b
+  exports: 08e830db2a848d84104350969a956823
+import  -/  RepeatMessage e801a32b48ee8c7012f14583d3513dc4
+  exports: 064105edbe2ae30b4e5cfc5ecb935bf6
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time 819d175a9e4b0a72c362762da9ea1ccd
 import  -/  time-1.6.0.1@time-1.6.0.1:Data.Time.Clock.POSIX 61428f31307889ffd40365cd5c4e9ca2
 d6831ef04cb9301b090dfae6f7bb7ec7
@@ -113,6 +119,11 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
+c7fc1fef0488c830658cf86d4b5cded3
+  beCareful :: GHC.Base.Maybe GHC.Types.Int
+  {- HasNoCafRefs,
+     Unfolding: InlineRule (0, True, True)
+                (GHC.Base.Nothing @ GHC.Types.Int) -}
 d876fef279395903661b391ab7aa8b2d
   encodeToJson :: Data.ByteString.Lazy.Internal.ByteString
   {- Unfolding: (Data.ByteString.Builder.toLazyByteString
@@ -436,6 +447,11 @@ ec981c56c4c88e2212eaee9655aeb41a
                       Data.Time.LocalTime.TimeZone.utc } })
                    GHC.Types.True
                    ipv }) -}
+c14e642e006c053774a16a7dacd51f19
+  sayHello :: GHC.Types.IO ()
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

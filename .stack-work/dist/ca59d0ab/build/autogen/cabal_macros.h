@@ -21,6 +21,13 @@
   (major1) == 4 && (major2) <  9 || \
   (major1) == 4 && (major2) == 9 && (minor) <= 1)
 
+/* package scotty-0.11.0 */
+#define VERSION_scotty "0.11.0"
+#define MIN_VERSION_scotty(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  11 || \
+  (major1) == 0 && (major2) == 11 && (minor) <= 0)
+
 /* package time-1.6.0.1 */
 #define VERSION_time "1.6.0.1"
 #define MIN_VERSION_time(major1,major2,minor) (\
