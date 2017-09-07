@@ -1,33 +1,29 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 import Network.HTTP.Simple    
---import Web.Scotty
---import Data.Monoid ((<>))
 
 main :: IO ()
 main = do
- response <- httpLbs "https://www.comparethemarket.com/"
- putStrLn $ show (getResponseStatusCode response)
- 
-{- scotty 3000 $ do
-  hello
-  index
+    testUrl
+   
 
-index :: ScottyM()
-index = do
- get "/" homePage   
- 
-hello :: ScottyM()
-hello = do
- get "/hello/:name" helloPage
 
-homePage :: ActionM()
-homePage = do
-    text "Home Page"   
-    
-helloPage :: ActionM()
-helloPage = do
-    name <- param "name"
-    text ("hello " <> name)    
--}
+-- main :: IO ()
+-- main = do
+--  let url = "https://www.comparethemarket.com/"   
+--  let statusCode = testUrl url
+--  handleStatusCode statusCode
 
+--testUrl :: String -> Response a
+testUrl = do
+    response <- httpLbs "https://www.comparethemarket.com/"
+    putStrLn $ show (getResponseStatusCode response)
+
+handleStatusCode :: Int -> IO()
+handleStatusCode statusCode
+ | statusCode >= 500 = putStrLn "Server Error"
+ | statusCode >= 400 = putStrLn "Client Error"
+ | statusCode >= 300 = putStrLn "Redirection"
+ | statusCode >= 200 = putStrLn "Success"
+ | statusCode >= 100 = putStrLn "Information"
+ | otherwise = putStrLn "Unknown Status Code" 
