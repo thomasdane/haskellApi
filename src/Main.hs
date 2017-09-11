@@ -4,20 +4,23 @@ import Network.HTTP.Simple
 
 main :: IO ()
 main = do
-    testUrl
-   
-
+    response <- httpLBS "http://httpbin.org/get"
+    let statusCode = show $ getResponseStatusCode response
+    putStrLn statusCode
 
 -- main :: IO ()
 -- main = do
---  let url = "https://www.comparethemarket.com/"   
---  let statusCode = testUrl url
---  handleStatusCode statusCode
+--  let url = "http://httpbin.org/get"   
+--  let statusCode = show $ getStatusCode url
+--  putStrLn statusCode
 
---testUrl :: String -> Response a
-testUrl = do
-    response <- httpLbs "https://www.comparethemarket.com/"
-    putStrLn $ show (getResponseStatusCode response)
+--getStatusCode :: Request -> IO()
+getStatusCode url = do
+ response <- httpLBS url
+ let statusCode = show $ getResponseStatusCode response
+ putStrLn statusCode
+
+
 
 handleStatusCode :: Int -> IO()
 handleStatusCode statusCode
