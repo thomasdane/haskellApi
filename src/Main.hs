@@ -4,23 +4,15 @@ import Network.HTTP.Simple
 
 main :: IO ()
 main = do
-    response <- httpLBS "http://httpbin.org/get"
-    let statusCode = show $ getResponseStatusCode response
+    let url = "http://httpbin.org/get"
+    statusCode <- getStatusCode url
     putStrLn statusCode
 
--- main :: IO ()
--- main = do
---  let url = "http://httpbin.org/get"   
---  let statusCode = show $ getStatusCode url
---  putStrLn statusCode
-
---getStatusCode :: Request -> IO()
+getStatusCode :: Control.Monad.IO.Class.MonadIO m => Request -> m String
 getStatusCode url = do
- response <- httpLBS url
- let statusCode = show $ getResponseStatusCode response
- putStrLn statusCode
-
-
+    response <- httpLBS url
+    let statusCode = show $ getResponseStatusCode response
+    return statusCode
 
 handleStatusCode :: Int -> IO()
 handleStatusCode statusCode
