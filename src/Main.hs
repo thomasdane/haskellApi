@@ -6,12 +6,16 @@ main :: IO ()
 main = do
     let url = "http://httpbin.org/get"
     statusCode <- getStatusCode url
-    putStrLn statusCode
+    handleStatusCode statusCode
 
-getStatusCode :: Control.Monad.IO.Class.MonadIO m => Request -> m String
+testUrls url= do
+    statusCode <- getStatusCode url
+    handleStatusCode statusCode
+    
+    
 getStatusCode url = do
     response <- httpLBS url
-    let statusCode = show $ getResponseStatusCode response
+    let statusCode = getResponseStatusCode response
     return statusCode
 
 handleStatusCode :: Int -> IO()
@@ -21,4 +25,7 @@ handleStatusCode statusCode
  | statusCode >= 300 = putStrLn "Redirection"
  | statusCode >= 200 = putStrLn "Success"
  | statusCode >= 100 = putStrLn "Information"
- | otherwise = putStrLn "Unknown Status Code" 
+ | otherwise = putStrLn "Unknown Status Code"
+ 
+urls = [ "http://httpbin.org/get"] 
+ 
