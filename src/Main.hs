@@ -4,19 +4,17 @@ import Network.HTTP.Simple
 
 main :: IO ()
 main = do
-    let url = "http://httpbin.org/get"
-    statusCode <- getStatusCode url
-    handleStatusCode statusCode
+ mapM_ testUrls urls
 
+testUrls :: Request -> IO ()
 testUrls url= do
-    statusCode <- getStatusCode url
-    handleStatusCode statusCode
-    
-    
+ statusCode <- getStatusCode url
+ handleStatusCode statusCode
+
 getStatusCode url = do
-    response <- httpLBS url
-    let statusCode = getResponseStatusCode response
-    return statusCode
+ response <- httpLBS url
+ let statusCode = getResponseStatusCode response
+ return statusCode
 
 handleStatusCode :: Int -> IO()
 handleStatusCode statusCode
@@ -27,5 +25,5 @@ handleStatusCode statusCode
  | statusCode >= 100 = putStrLn "Information"
  | otherwise = putStrLn "Unknown Status Code"
  
-urls = [ "http://httpbin.org/get"] 
+urls = ["http://httpbin.org/get","http://httpbin.org/get"] 
  
