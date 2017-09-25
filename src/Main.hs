@@ -2,6 +2,10 @@
 module Main where
 import Network.HTTP.Simple    
 
+--next time
+-- use aws sdk for haskell
+-- to send a test email
+
 main :: IO ()
 main = do
  mapM_ testUrls urls
