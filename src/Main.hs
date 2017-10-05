@@ -5,13 +5,15 @@ import Network.HTTP.Simple
 --next time
 -- use aws sdk for haskell
 -- to send a test email
+ 
+urls = ["http://httpbin.org/get","http://httpbin.org/get"] 
 
 main :: IO ()
 main = do
- mapM_ testUrls urls
+ mapM_ testUrl urls
 
-testUrls :: Request -> IO ()
-testUrls url= do
+testUrl :: Request -> IO ()
+testUrl url = do
  statusCode <- getStatusCode url
  handleStatusCode statusCode
 
@@ -28,6 +30,5 @@ handleStatusCode statusCode
  | statusCode >= 200 = putStrLn "Success"
  | statusCode >= 100 = putStrLn "Information"
  | otherwise = putStrLn "Unknown Status Code"
- 
-urls = ["http://httpbin.org/get","http://httpbin.org/get"] 
+
  
