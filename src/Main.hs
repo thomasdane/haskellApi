@@ -3,8 +3,10 @@ module Main where
 import Network.HTTP.Simple    
 
 --next time
--- use aws sdk for haskell
--- to send a test email
+--setup mailgun
+-- can make postman request
+-- save request
+-- do the same request in haskell
  
 urls = ["http://httpbin.org/get","http://httpbin.org/get"] 
 
