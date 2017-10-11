@@ -19,6 +19,10 @@ testUrl url = do
  statusCode <- getStatusCode url
  handleStatusCode statusCode
 
+makeRequest = do
+ response <- httpJSON "POST http://httpbin.org/post" :: IO (Response ())
+ putStrLn $ "The status code was: " ++ show (getResponseStatusCode response) 
+
 getStatusCode url = do
  response <- httpLBS url
  let statusCode = getResponseStatusCode response
